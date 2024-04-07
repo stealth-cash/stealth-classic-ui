@@ -1,7 +1,9 @@
+import { PhantomWallet } from "./PhantomWallet";
+
 export const Navbar = () => {
     return (
         <div>
-            <h1>Navbar</h1>
+            <PhantomWallet></PhantomWallet>
         </div>
     );
 }
