@@ -1,7 +1,9 @@
+import { WithdrawCard } from "../components";
+
 export const Withdraw = () => {
     return (
         <>
-            <h1>Withdraw</h1>
+            <WithdrawCard />
         </>
     );
 }

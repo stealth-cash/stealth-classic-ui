@@ -12,7 +12,12 @@ export const PhantomWallet: FC = () => {
                 <Fragment>
                     {user.connected 
                         ? <Button onClick={disconnect} text="Disconnect" />
-                        : <Button onClick={connect} text="Connect Phantom"/>
+                        : <img src="phantom.svg"
+                            alt="Connect Phantom"
+                            onClick={connect}
+                            className="p-2 w-16 h-16 rounded-xl bg-indigo-900 hover:bg-indigo-800 
+                            ease-in-out duration-150 border-[1px] border-purple-300"
+                            />
                     }
                 </Fragment>
             :

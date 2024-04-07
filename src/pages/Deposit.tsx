@@ -1,9 +1,9 @@
-import { Card } from "../components";
+import { DepositCard } from "../components";
 
 export const Deposit = () => {
     return (
         <>
-            <Card />
+            <DepositCard />
         </>
     );
 }

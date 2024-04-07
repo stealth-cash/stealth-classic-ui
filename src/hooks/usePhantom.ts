@@ -47,7 +47,7 @@ export const usePhantom = () => {
         });
     }, [provider]);
 
-    const connect: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
+    const connect: React.MouseEventHandler<HTMLElement> = async (e) => {
         try {
             e.preventDefault();
             const pubkey = await provider?.connect();
