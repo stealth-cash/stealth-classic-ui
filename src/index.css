@@ -2,9 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "chakra-petch-bold";
+    src: url("../fonts/ChakraPetch-Bold.ttf");
+}
+
+.chakra-petch {
+    font-family: "chakra-petch", sans-serif;
+}
+
+@font-face {
+    font-family: "chakra-petch-semibold";
+    src: url("../fonts/ChakraPetch-SemiBold.ttf");
+}
+
+.chakra-petch-semibold {
+    font-family: "chakra-petch-semibold";
+}
+
 * {
     box-sizing: border-box;
     position: relative;
     margin: 0;
     padding: 0;
+    font-family: "chakra-petch-semibold", sans-serif;
 }
+
+.matrix { background-color: #92e5a1; }
+.text-matrix { color: #92e5a1; }
+.solana-green-text { color: #00FFA3; }
+.solana-green { background-color: #00FFA3;}
+.solana-purple-text { color:  #DC1FFF; }
+.solana-purple { background-color:  #DC1FFF;}	
