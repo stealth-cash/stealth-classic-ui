@@ -16,6 +16,8 @@ let counter = 0;
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+canvas.style.zIndex = -1;
+canvas.style.position = "absolute"
 
 function Vector3(x, y, z) {
   this.x = x;
