@@ -1,12 +1,14 @@
 import { Suspense, lazy } from "react";
 import { Loader } from "../components/Loader";
 
-export const Deposit = () => {
-    const DepositCardLazy = lazy(() => import("../components/DepositCard"));
+const Transfer = () => {
+    const TransferCardLazy = lazy(() => import("../components/TransferCard"));
     
     return (
         <Suspense fallback={<Loader />}>
-            <DepositCardLazy />
+            <TransferCardLazy />
         </Suspense>
     );
 }
+
+export default Transfer;

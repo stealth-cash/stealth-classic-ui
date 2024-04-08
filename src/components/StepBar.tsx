@@ -4,7 +4,7 @@ const Radio = ({label}: {label: string}) => {
             <input 
                 id="radio" type="radio"name="colored-radio" 
                 className="outline-none w-8 h-8 bg-[#00FFA3] accent-[#00FFA3] border-2 border-[#00FFA3]" />
-            <label htmlFor="radio" className="ms-2 text-xl font-medium text-matrix">{label} SOL</label>
+            <label htmlFor="radio" className="ms-2 text-xl font-medium text-matrix mt-4">{label} SOL</label>
         </div>    
     );
 }

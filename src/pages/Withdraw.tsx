@@ -1,7 +1,7 @@
 import { Loader } from "../components/Loader";
 import { Suspense, lazy } from "react";
 
-export const Withdraw = () => {
+const Withdraw = () => {
     const WithdrawCardLazy = lazy(() => import("../components/WithdrawCard"));
     
     return (
@@ -10,3 +10,5 @@ export const Withdraw = () => {
         </Suspense>
     );
 }
+
+export default Withdraw;
