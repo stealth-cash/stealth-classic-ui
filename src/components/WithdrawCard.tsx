@@ -1,6 +1,7 @@
-import { Button, Input } from ".";
+import { Button } from "./Button";
+import { Input } from "./Input";
 
-export const WithdrawCard = () => (
+const WithdrawCard = () => (
     <div className="w-3/4 md:w-1/2 h-3/4 md:h-1/2 p-4 md:p-0 bg-transparent flex flex-col items-center 
         border-r-2 border-l-2 border-b-4 border-[#92e5a1]">
         <div className="w-full h-20 flex flex-row bottom-0 divide-black divide-x-4">
@@ -23,3 +24,5 @@ export const WithdrawCard = () => (
         </div>
     </div>
 );
+
+export default WithdrawCard;

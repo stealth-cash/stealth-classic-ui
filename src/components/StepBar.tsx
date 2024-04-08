@@ -1,4 +1,3 @@
-
 const Radio = ({label}: {label: string}) => {
     return (
         <div className="flex flex-col items-center me-4 md:m-10">

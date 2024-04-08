@@ -1,9 +1,11 @@
-import { WithdrawCard } from "../components";
+import { Loader } from "../components/Loader";
+import { Suspense, lazy } from "react";
 
 export const Withdraw = () => {
+    const WithdrawCardLazy = lazy(() => import("../components/WithdrawCard"));
     return (
-        <>
-            <WithdrawCard />
-        </>
+        <Suspense fallback={<Loader />}>
+            <WithdrawCardLazy />
+        </Suspense>
     );
 }

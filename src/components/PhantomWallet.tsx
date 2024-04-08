@@ -1,6 +1,6 @@
 import { FC, Fragment } from "react";
 import { usePhantom } from "../hooks/usePhantom";
-import { Button } from ".";
+import { Button } from "./Button";
 
 export const PhantomWallet: FC = () => {
     const { user, walletAvailable, connect, disconnect } = usePhantom();  
