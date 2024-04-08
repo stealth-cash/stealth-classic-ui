@@ -7,7 +7,6 @@ export const PhantomWallet: FC = () => {
 
     return (
         <div>
-            <p>{}</p>
             { walletAvailable ?
                 <Fragment>
                     {user.connected 

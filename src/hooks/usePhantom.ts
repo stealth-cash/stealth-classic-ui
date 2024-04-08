@@ -20,11 +20,29 @@ type WindowWithSolana = Window & {
     solana?: PhantomProvider;
 }
 
+const getPubkey = (): PublicKey | null => localStorage.getItem("stealth:user-pubkey") 
+    ? JSON.parse(localStorage.getItem("stealth:user-pubkey") as string)
+    : null;
+
 export const usePhantom = () => {
     const [walletAvailable, setWalletAvailable] = useState(false);
     const [provider, setProvider] = useState<PhantomProvider | null>(null);
-    const [connected, setConnected] = useState(false);
-    const [pubKey, setPubKey] = useState<PublicKey | null>(null);
+    const [connected, setConnected] = useState(getPubkey() !== null);
+    const [pubkey, setPubKey] = useState<PublicKey | null>(getPubkey());
+
+    const handleConnect = (publicKey: PublicKey) => {
+        setConnected(true); 
+        setPubKey(publicKey);
+        store.dispatch(connectWallet(JSON.stringify(publicKey)));
+        localStorage.setItem("stealth:user-pubkey", JSON.stringify(publicKey));
+    }
+
+    const handleDisconnect = () => {
+        setConnected(false);
+        setPubKey(null);
+        store.dispatch(disconnectWallet());
+        localStorage.removeItem("stealth:user-pubkey");
+    }
 
     useEffect(() => {
         const windowWithSolana = window as WindowWithSolana;
@@ -35,16 +53,8 @@ export const usePhantom = () => {
     }, []);
 
     useEffect(() => {
-        provider?.on("connect", (publicKey: PublicKey) => { 
-            console.log(`connect event: ${publicKey}`);
-            setConnected(true); 
-            setPubKey(publicKey);
-        });
-        provider?.on("disconnect", () => { 
-            console.log("disconnect event");
-            setConnected(false); 
-            setPubKey(null);
-        });
+        provider?.on("connect", handleConnect);
+        provider?.on("disconnect", handleDisconnect);
     }, [provider]);
 
     const connect: React.MouseEventHandler<HTMLElement> = async (e) => {
@@ -54,7 +64,7 @@ export const usePhantom = () => {
             if (!pubkey) {
                 throw new Error("Invalid public key");
             }
-            store.dispatch(connectWallet(JSON.stringify(pubkey.publicKey)));
+            handleConnect(pubkey.publicKey);
             console.log("Connected to Phantom wallet");
         } catch (error) {
             console.error("Could not connect phantom wallet", error);
@@ -65,12 +75,17 @@ export const usePhantom = () => {
         try {
             e.preventDefault();
             await provider?.disconnect();
-            store.dispatch(disconnectWallet());
+            handleDisconnect();
             console.log("Disconnected from Phantom wallet");
         } catch (error) {
             console.error("Failed to disconnect phantom wallet", error);
         }
     };
 
-    return { user: { connected, pubKey }, walletAvailable, connect, disconnect };
+    return { 
+        user: { connected, pubkey },
+        walletAvailable,
+        connect,
+        disconnect 
+    };
 };
